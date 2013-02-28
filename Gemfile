@@ -41,6 +41,7 @@ gem 'nokogiri', '~> 1.5.0'
 
 # Authentication
 gem 'devise', '~> 2.0'
+gem 'devise_openid_authenticatable'
 
 # Authorization
 gem 'cancan', '~> 1.6.7'

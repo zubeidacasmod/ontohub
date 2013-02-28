@@ -64,7 +64,10 @@ module Ontohub
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
+    # Authentication with OpenID
+    config.middleware.insert_before(Warden::Manager, Rack::OpenID)
+
     config.before_initialize do
       # Enable serving of images, stylesheets, and JavaScripts from an asset server
       config.action_controller.asset_host = Settings.asset_host
