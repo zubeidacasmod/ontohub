@@ -88,14 +88,14 @@ now enable the module an restart apache2:
 
 Tomcat with Solr is only required in the production environment.
 
-    apt-get install tomcat6 tomcat6-admin
+    apt-get install tomcat7 tomcat7-admin
     
     cd /root/
-    version=3.6.0
-    wget http://apache.openmirror.de/lucene/solr/$version/apache-solr-$version.tgz
-    tar xzf apache-solr-$version.tgz
-    sudo cp apache-solr-$version/dist/apache-solr-solrj-$version.jar /var/lib/tomcat6/webapps/solr.war
-    ln -s /srv/http/ontohub.org/current/solr/conf /var/lib/tomcat6/webapps/solr/
+    version=4.3.0
+    wget http://psg.mtu.edu/pub/apache/lucene/solr/$version/solr-$version.tgz
+    tar xzf solr-$version.tgz
+    sudo cp solr-$version/dist/solr-$version.war /var/lib/tomcat7/webapps/solr.war
+    ln -s /srv/http/ontohub.org/current/solr/conf /var/lib/tomcat7/webapps/solr/
 
 The war-Package should be automatically loaded.
 
