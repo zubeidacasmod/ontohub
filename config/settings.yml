@@ -28,7 +28,11 @@ allow_unconfirmed_access_for_days: 3
 
 # Footer links and texts
 footer:
-  - text: Ontohub
+  - text: Copyright © 2012, 2013 Universität Bremen
+  - text: Released under the terms of GNU AGPL 3.0
+    href: http://www.gnu.org/licenses/agpl-3.0.html
+  - text: Ontohub code on GitHub
+    href: https://github.com/ontohub/ontohub
   - text: About
     href: http://about.ontohub.org
 
