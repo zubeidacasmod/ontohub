@@ -6,16 +6,16 @@
 # 
 
 # Name of the installation
-name: "My Ontohub Installation"
+name: "Ontohub"
 
 # Hostname of the installation
-hostname: example.com
+hostname: ontohub.org
 
 # Optional asset host for delivery of static files (css, images, javascripts)
 # asset_host: assets.example.com
 
 # Sender address for outgoing mail
-email: noreply@example.com
+email: noreply@ontohub.org
 
 # Mail delivery
 # http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
@@ -28,14 +28,14 @@ allow_unconfirmed_access_for_days: 3
 
 # Footer links and texts
 footer:
-  - text: Foo Institute
+  - text: Ontohub
   - text: About
-    href: http://about.example.com
+    href: http://about.ontohub.org
 
 # Delivery of exceptions, disabled by default
 exception_notifier:
   enabled: false
   email_prefix: "[ontohub exception]"
-  sender_address: "exceptions@example.com"
+  sender_address: "exceptions@ontohub.org"
   exception_recipients:
-    - exception-recipient@example.com
+    - exceptions@ontohub.org
