@@ -6,7 +6,7 @@ class Cart < ActiveRecord::Base
   end
   
   def add(item)
-    cart_items.create(cart: self, ontology_version: item)
+    cart_items.create(cart: self, cartable: item)
   end
   
   def size
@@ -14,8 +14,7 @@ class Cart < ActiveRecord::Base
   end
   
   def find(item)
-    return cart_items.where(ontology_version_id: item.id).first if item.class.to_s == 'OntologyVersion'
-    return cart_items.where(ontology_version_id: item).first if item.class.to_s == 'Fixnum'
-    raise "not acceptable type: " + item.class.to_s
+    return cart_items.where(cartable_id: item).first if item.class.to_s == 'Fixnum'
+    return cart_items.where(cartable_id: item.id).first
   end
 end

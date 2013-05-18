@@ -31,7 +31,7 @@ class CartTest < ActiveSupport::TestCase
       end
       
       should 'add the ontoversion to the cart' do
-        assert_equal @version, @cart.find(@version).ontology_version
+        assert_equal @version, @cart.find(@version).cartable
       end
       should 'increase the number of items' do
         assert_equal 1, @cart.size
@@ -45,11 +45,11 @@ class CartTest < ActiveSupport::TestCase
       end
       should 'with object' do
         cart_item = @cart.find(@version2)
-        assert_equal @version2, cart_item.ontology_version
+        assert_equal @version2, cart_item.cartable
       end
       should 'with id' do
         cart_item = @cart.find(@version.id)
-        assert_equal @version, cart_item.ontology_version
+        assert_equal @version, cart_item.cartable
       end
     end
   end
