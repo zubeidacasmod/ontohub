@@ -6,7 +6,7 @@
 # 
 
 # Name of the installation
-name: "Ontohub"
+name: 'Ontohub'
 
 # Hostname of the installation
 hostname: ontohub.org
