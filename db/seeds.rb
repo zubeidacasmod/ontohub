@@ -6,7 +6,7 @@ ActiveRecord::Base.logger = Logger.new($stdout)
 
 # Do not create background jobs
 OntologyVersion.send :alias_method, :parse_async, :parse
-def OopsRequest.async_run; end
+OopsRequest.send :define_method, :async_run, ->{}
 
 # Create Admin User
 user = User.create!({
@@ -35,6 +35,9 @@ team = Team.create! \
   # add two users to the first team
   team.users << user if i < 2
 end
+
+# initially import logics
+Rake::Task['logicgraph:import'].invoke
 
 # Import ontologies
 Dir["#{Rails.root}/test/fixtures/ontologies/*/*.{casl,clf,clif,owl}"].each do |file|
@@ -85,8 +88,9 @@ request.save!
 
 responses = %w( Pitfall Warning Warning Suggestion ).map do |type|
   request.responses.create! \
-      name:        Faker::Name.name,
-      description: Faker::Lorem.paragraph,
+      name:         Faker::Name.name,
+      code:         0,
+      description:  Faker::Lorem.paragraph,
       element_type: type
 end
 

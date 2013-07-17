@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.13'
 gem 'rack-protection'
+gem 'secure_headers'
+
 gem 'pg'
 gem 'foreigner'
+
 gem 'rdf'
 gem 'rdf-rdfxml'
 gem 'rdf-n3'
@@ -12,7 +15,7 @@ gem 'rdf-n3'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass', "~> 2.3.1", git: "git://github.com/digineo/bootstrap-sass.git", branch: 'v2.3.1.0-with_javascript_fixes'
+  gem 'bootstrap-sass', "~> 2.3.2"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass',      '~> 0.12.1'
   gem 'font_awesome'
@@ -75,7 +78,7 @@ gem 'ruby-graphviz', "~> 1.0.8"
 gem "faker", "~> 1.1.2"
 
 group :test do
-  gem 'mocha'
+  gem 'mocha', require: 'mocha/setup'
   gem 'shoulda'
   gem "shoulda_routing_macros", "~> 0.1.2"
   gem "factory_girl_rails"
