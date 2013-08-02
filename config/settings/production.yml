@@ -1,4 +1,1 @@
 # Put your production specific settings into this file
-
-exception_notifier:
-  enabled: false

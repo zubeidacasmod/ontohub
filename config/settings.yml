@@ -6,7 +6,7 @@
 # 
 
 # Name of the installation
-name: "Ontohub Staging"
+name: 'Ontohub Staging'
 
 # Hostname of the installation
 hostname: staging.ontohub.org
@@ -35,7 +35,7 @@ footer:
 
 # Delivery of exceptions, disabled by default
 exception_notifier:
-  enabled: true
+  enabled: false
   email_prefix: "[ontohub staging exception]"
   sender_address: "exceptions@ontohub.org"
   exception_recipients:
