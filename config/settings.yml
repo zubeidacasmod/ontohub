@@ -43,3 +43,10 @@ exception_notifier:
   sender_address: "exceptions@ontohub.org"
   exception_recipients:
     - exceptions@ontohub.org
+
+allowed_iri_schemes:
+  - http
+  - https
+  - file
+  - gopher
+  - urn
