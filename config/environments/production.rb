@@ -20,6 +20,9 @@ Ontohub::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = false
 
+  # Activate debug mode (and make browser fetch assets separately)
+  config.assets.debug = true
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
