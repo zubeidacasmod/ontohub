@@ -28,7 +28,7 @@
 //= require js-routes
 
 // GWT Plugin
-//= require gwt/ontohub.nocache.js
+//= require "gwt/ontohub.nocache.js"
 
 // ----------------------------------------------
 // Application
