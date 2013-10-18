@@ -13,6 +13,7 @@ class Ontology < ActiveRecord::Base
   include Ontology::Links
   include Ontology::Distributed
   include Ontology::Oops
+  include Ontology::Search
 
   # Multiple Class Features
   include Aggregatable

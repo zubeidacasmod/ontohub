@@ -5,6 +5,7 @@ gem 'rack-protection'
 gem 'secure_headers'
 
 gem 'pry-rails'
+gem 'tire'
 
 gem 'pg'
 gem 'foreigner'
@@ -71,10 +72,6 @@ gem "rest-client"
 gem 'sidekiq', '~> 2.15'
 gem 'sinatra', require: false, group: [:development, :production]
 
-# Search engine
-gem 'sunspot_rails', :git => 'git://github.com/digineo/sunspot.git'
-gem 'progress_bar'
-
 # Graph visualization
 gem 'ruby-graphviz', "~> 1.0.8"
 
@@ -115,8 +112,6 @@ end
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
-  # pre-packaged Solr distribution for use in development
-  gem 'sunspot_solr', :git => 'git://github.com/digineo/sunspot.git'
   gem "rails-erd"
   gem 'quiet_assets'
 end

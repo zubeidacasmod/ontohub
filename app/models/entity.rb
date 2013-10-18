@@ -1,7 +1,6 @@
 class Entity < ActiveRecord::Base
 
   include Metadatable
-  include Entity::Searching
   include Entity::Readability
 
   belongs_to :ontology
