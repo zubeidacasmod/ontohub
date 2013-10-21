@@ -1,28 +1,32 @@
 class ActiveRecord::Base
 
-  # Makes a method asynchronous
+  # Creates a async_<methodname> method that
+  # enqueues the corresponding method call.
   def self.async_method(*methods)
     methods.each do |method|
-      alias_method "#{method}_sync", method
-      define_method method do |*args|
-        async "#{method}_sync", *args
+      define_method "async_#{method}" do |*args|
+        async method, *args
       end
     end
   end
   
+  def self.async(method, *args)
+    async_in 'class', 1, method.to_s, *args
+  end
+
   # Enqueues a method to run in the background
   def async(method, *args)
     # 1 second in the future should be after finishing the SQL transaction
-    async_in method, 1, *args
+    self.class.async_in 'record', 1, method.to_s, id.to_s, *args
   end
 
   # Enqueues a method to run in the future
-  def async_in(method, at, *args)
+  def self.async_in(type, at, *args)
     Sidekiq::Client.push \
-      'queue'     => self.class.instance_variable_get('@queue') || 'default',
+      'queue'     => instance_variable_get('@queue') || 'default',
       'class'     => Worker,
       'retry'     => false,
-      'args'      => [self.class.to_s, id.to_s, method.to_s, *args],
+      'args'      => [type, self.to_s, *args],
       'at'        => (at < 1_000_000_000 ? Time.now + at : at).to_f
   end
 
