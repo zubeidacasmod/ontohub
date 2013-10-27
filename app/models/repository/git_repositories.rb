@@ -43,7 +43,7 @@ module Repository::GitRepositories
   def save_ontology(commit_oid, filepath, user=nil, iri=nil)
     return unless Ontology::FILE_EXTENSIONS.include?(File.extname(filepath))
 
-    basepath = File.real_basepath(filepath)
+    basepath = File.basepath(filepath)
     o = ontologies.where(basepath: basepath).first
 
     if o
@@ -91,14 +91,15 @@ module Repository::GitRepositories
       if file
         {
           type: :file,
-          file: file
+          file: file,
+          ontologies: ontologies.where(basepath: File.basepath(path))
         }
       else
         entries = list_folder(path, commit_oid)
         entries.each do |name, es|
           es.each do |e|
-            o = ontologies.find_by_basepath(File.real_basepath(e[:path]))
-            e[:ontology] = o
+            o = ontologies.where(basepath: File.basepath(e[:path]))
+            e[:ontologies] = o
           end
         end
         {
