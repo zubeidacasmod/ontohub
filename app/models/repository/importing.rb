@@ -39,7 +39,7 @@ module Repository::Importing
 
   # enqueues a pull job
   def remote_pull
-    remote_send :fetch_and_reset
+    remote_send :pull
   end
 
 =begin
@@ -63,6 +63,7 @@ module Repository::Importing
       update_state! 'processing'
       save_current_ontologies
 
+      self.imported_at = Time.now
       update_state! 'done'
 
       result
