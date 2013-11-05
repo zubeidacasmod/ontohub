@@ -3,3 +3,5 @@
 hostname: develop.ontohub.org
 exception_notifier:
   enabled: false
+
+display_head_commit: true
