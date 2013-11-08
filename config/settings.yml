@@ -6,7 +6,7 @@
 # 
 
 # Name of the installation
-name: 'Ontohub Staging'
+name: "MyOntohub"
 
 # Hostname of the installation
 hostname: staging.ontohub.org
@@ -41,9 +41,14 @@ exception_notifier:
   exception_recipients:
     - exception-recipient@example.com
 
+git:
+  verify_url: http://localhost/
+
 allowed_iri_schemes:
   - http
   - https
   - file
   - gopher
   - urn
+
+display_head_commit: false
