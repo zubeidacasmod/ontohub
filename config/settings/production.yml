@@ -4,8 +4,4 @@ hostname: "develop.ontohub.org"
 exception_notifier:
   enabled: true
 
-git:
-  user: 'git'
-  group: 'git'
-
 display_head_commit: true
