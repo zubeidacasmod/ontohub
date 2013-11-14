@@ -83,10 +83,6 @@ gem 'ruby-graphviz', "~> 1.0.8"
 # Fake-inputs for tests and seeds
 gem "faker", "~> 1.1.2"
 
-group :development, :test do
-  gem 'byebug'
-end
-
 # Git
 gem 'rugged'
 gem 'diffy'
