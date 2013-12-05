@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class OntologySearchTest < ActiveSupport::TestCase
-  
+class OntologySearchTest < ActiveSupport::TestCase 
+
   context 'OntologySearch' do
     setup do
       @os = OntologySearch.new
@@ -38,6 +38,12 @@ class OntologySearchTest < ActiveSupport::TestCase
       @ontologies.map(&:save)
       @entities.map(&:save)
       @logics.map(&:save)
+      ::Sunspot.session = ::Sunspot.session.original_session
+      Ontology.reindex
+    end
+
+    teardown do
+      ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)     
     end
 
     context 'keyword list' do
@@ -96,7 +102,7 @@ class OntologySearchTest < ActiveSupport::TestCase
     context 'bean list' do
       context 'with one keyword' do
         should 'be generated correctly' do
-          results = @os.make_global_bean_list([@o1.name], 1)
+          results = @os.make_global_bean_list_response([@o1.name], 1).results
           results = results.map { |x| x[:name] }
 
           assert_equal @ontologies.size, results.size
@@ -109,7 +115,7 @@ class OntologySearchTest < ActiveSupport::TestCase
 
       context 'with two keywords' do
         should 'be generated correctly' do
-          results = @os.make_global_bean_list([@o1.name, @e1.name], 1)
+          results = @os.make_global_bean_list_response([@o1.name, @e1.name], 1).results
           results = results.map { |x| x[:name] }
 
           assert_equal 1, results.size
@@ -120,7 +126,7 @@ class OntologySearchTest < ActiveSupport::TestCase
         end
 
         should 'return an empty set' do
-          results = @os.make_global_bean_list([@o2.name, @e1.name], 1)
+          results = @os.make_global_bean_list_response([@o2.name, @e1.name], 1).results
           results = results.map { |x| x[:name] }
 
           assert_equal 0, results.size

@@ -1,10 +1,7 @@
 # Put your production specific settings into this file
 
-hostname: "ontohub.org"
+hostname: develop.ontohub.org
 exception_notifier:
-  enabled: true
+  enabled: false
 
-git:
-  user: 'git'
-  group: 'git'
 display_head_commit: true
