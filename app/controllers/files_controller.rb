@@ -3,9 +3,6 @@ class FilesController < ApplicationController
   helper_method :repository, :ref, :oid, :path, :branch_name
   before_filter :check_permissions, only: [:new, :create]
 
-  # FIXME
-  #load_and_authorize_resource :except => [:index, :show]
-
   def files
     @info = repository.path_info(params[:path], oid)
 
@@ -19,6 +16,10 @@ class FilesController < ApplicationController
         ontology = repository.ontologies.
                     where(basepath: File.basepath(@info[:entry][:path])).
                     order('id asc').first
+        if request.query_string.present?
+          ontology = ontology.children.
+            where(name: request.query_string).first
+        end
         redirect_to [repository, ontology]
       end
     else
