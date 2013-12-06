@@ -2,11 +2,17 @@ class Category < ActiveRecord::Base
 
   extend Dagnabit::Vertex::Activation
   
-  attr_accessible :name
   attr_accessor :parent
+  has_and_belongs_to_many :ontologies
+  attr_accessible :name, :ontologies
 
   acts_as_vertex
   connected_by 'CEdge'
+  
+  def relatedOntologies
+    categories = [self]+[self.children] 
+    Ontology.where(:category => [categories])
+  end
 
 # has_and_belongs_to_many :ontologies
   
