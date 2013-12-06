@@ -42,6 +42,8 @@ exception_notifier:
 
 git:
   verify_url: http://localhost/
+  user: 'git'
+  group: 'ontohub'
 
 allowed_iri_schemes:
   - http
