@@ -27,14 +27,15 @@ module NavigationHelper
       ['Links', :links]
     ]
 
-    if params[:action] != "edit"
-      @metadatas = [
-        ['Projects', repository_ontology_projects_path],
-        ['Categories', repository_ontology_categories_path],
-        ['Tasks', repository_ontology_tasks_path],
-        ['License Model', repository_ontology_license_models_path]
-      ]
-    end
+    @metadatas = []
+    if params[:action]!= "edit"
+    @metadatas = [
+      ['Projects', repository_ontology_projects_path],
+      ['Categories', repository_ontology_categories_path],
+      ['Tasks', repository_ontology_tasks_path],
+      ['License Model', repository_ontology_license_models_path]
+    ]
+  end
 
     @entities = ontology.distributed? ? [] : ontology.entities.groups_by_kind
 
